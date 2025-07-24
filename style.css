@@ -9,3 +9,7 @@ button {
 .journal-edit {
   display: none;
 }
+
+.journal-display {
+  display: none;
+}

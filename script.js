@@ -1,4 +1,3 @@
-// TODO: check if using one click counter var manages both new journal and edit journal buttons
 let clickCounterNew = 0;
 let clickCounterEdit = 0;
 let journals = [];
@@ -30,10 +29,14 @@ function journalObjectCreation(name, value, id) {
 
 newJournalAction.addEventListener("click", function() {
   clickCounterNew++;
-  
+  if (journalEditSectionDisplay.display === "none" || journalEditSectionDisplay.display === "block") {
+    journalEditSection.style.display = "none";
+    journalCreationSection.style.display = "block";
+    clickCounterEdit = 0;
+  }
   if (clickCounterNew === 2) {
-    journalCreationSectionDisplay.display = "none";
     clickCounterNew = 0;
+    journalCreationSection.style.display = "none";
   }
 });
 
@@ -48,15 +51,20 @@ createJournalBtn.addEventListener("click", function() {
     journalDropdownValue.textContent = journalName.value;
     journalDropdown.appendChild(journalDropdownValue);
     alert(`Journal "${journalName.value}" created!`);
-    journalCreationSectionDisplay.display = "none";
+    journalCreationSection.style.display = "none";
+    journalName.value = "";
   }
 });
 
 editJournalAction.addEventListener("click", function() {
   clickCounterEdit++;
-  journalEditSection.style.display = "block";
+  if (journalCreationSectionDisplay.display === "none" || journalCreationSectionDisplay.display === "block") {
+    journalCreationSection.style.display = "none";
+    journalEditSection.style.display = "block";
+    clickCounterNew = 0;
+  }
   if (clickCounterEdit === 2) {
-    journalEditSection.style.display = "none";
     clickCounterEdit = 0;
+    journalEditSection.style.display = "none";
   }
 });

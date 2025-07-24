@@ -1,9 +1,8 @@
-entrypoint = "index.html"
-modules = ["web"]
+modules = ["nodejs-20", "python-3.11", "web"]
 
 [nix]
-channel = "stable-24_11"
-packages = ["static-web-server"]
+channel = "stable-25_05"
+packages = ["static-web-server", "vim-full"]
 
 [deployment]
 publicDir = "/"
@@ -28,3 +27,7 @@ waitForPort = 80
 [[ports]]
 localPort = 80
 externalPort = 80
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
