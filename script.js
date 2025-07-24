@@ -46,10 +46,10 @@ createJournalBtn.addEventListener("click", function() {
     alert("Please enter a name for your journal!");
   } else {
     journals.push(journalObjectCreation(journalName.value, "", journals.length));
-    let journalDropdownValue = document.createElement("option");
-    journalDropdownValue.value = journalName.value;
-    journalDropdownValue.textContent = journalName.value;
-    journalDropdown.appendChild(journalDropdownValue);
+    let journalButton = document.createElement("button");
+    journalButton.value = journalName.value;
+    journalButton.textContent = journalName.value;
+    journalEditSection.appendChild(journalButton);
     alert(`Journal "${journalName.value}" created!`);
     journalCreationSection.style.display = "none";
     journalName.value = "";
@@ -68,3 +68,4 @@ editJournalAction.addEventListener("click", function() {
     journalEditSection.style.display = "none";
   }
 });
+
